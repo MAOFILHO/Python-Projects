@@ -1,0 +1,44 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pycache
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+
+# ── Virtual environments ───────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Jupyter ────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Generated outputs ──────────────────────────────────────────────────────
+# outputs/
+
+# ── Models / pickles (add back if you want to track serialised models) ─────
+*.pkl
+*.joblib
+*.h5
+
+# ── macOS ──────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# ── VS Code ────────────────────────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ── Environment / secrets ─────────────────────────────────────────────────
+.env
+.env.*
+*.pem
