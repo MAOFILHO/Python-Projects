@@ -76,7 +76,7 @@ python main.py
 python main.py --skip-grid
 
 # Custom data path or output directory
-python main.py --data path/to/data.csv --output-dir results/
+# python main.py --data path/to/data.csv --output-dir results/
 ```
 
 ---
