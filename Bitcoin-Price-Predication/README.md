@@ -2,6 +2,10 @@
 
 Machine learning pipeline that predicts whether Bitcoin's price will go **up or down** the next day, trained on OHLC data from 2014 to 2022.
 
+Bitcoin price prediction has garnered significant attention due to its volatile nature and the potential for lucrative trading opportunities. With the rise of machine learning (ML), predicting market trends has become increasingly feasible. This project explores how ML can be utilized to predict Bitcoin's price movement, specifically whether a trade will result in a profitable outcome. By leveraging various ML models, such as Logistic Regression, Support Vector Machines (SVM), and XGBoost, we aim to analyze Bitcoin price data to forecast future trends.
+
+We begin by loading and exploring Bitcoin price data, focusing on OHLC (Open, High, Low, Close) values from 2014 to 2022. Next, we perform feature engineering, introducing variables such as \"open-close\" and \"low-high\" to better understand market behavior. With preprocessed data, we train multiple ML models to predict the market's direction. The model's performance is evaluated using metrics like ROC-AUC, offering insights into the effectiveness of different algorithms in predicting Bitcoin price movements.
+
 ## Models
 | Model | Notes |
 |---|---|
@@ -83,3 +87,24 @@ All plots and the model results CSV are written to `./outputs/`.
 - Train/validation split is **chronological** (70 % / 30 %) to avoid data leakage.
 - `Adj Close` is dropped because it is identical to `Close` in this dataset.
 - Model accuracy is close to 50 % — consistent with the efficient-market hypothesis for short-horizon crypto prediction with minimal features.
+
+---
+
+## Screenshots
+
+<img width="1306" height="948" alt="Screenshot 2026-06-03 at 3 21 50 PM" src="https://github.com/user-attachments/assets/24a9ab13-dedf-4dee-88a6-3e2cdc29fdca" />
+
+<img width="886" height="886" alt="Screenshot 2026-06-03 at 3 26 14 PM" src="https://github.com/user-attachments/assets/e8be3105-2501-4df7-a4c5-18ee989733ee" />
+
+<img width="865" height="806" alt="Screenshot 2026-06-03 at 3 26 27 PM" src="https://github.com/user-attachments/assets/2ada0eb9-ab62-45d6-bfe6-0ef9b9ca50d2" />
+
+<img width="1082" height="385" alt="Screenshot 2026-06-03 at 3 26 58 PM" src="https://github.com/user-attachments/assets/3b76bc2a-c8e7-484c-8481-33ea70b89170" />
+
+<img width="1086" height="555" alt="Screenshot 2026-06-03 at 3 27 08 PM" src="https://github.com/user-attachments/assets/ca773e26-cadd-4798-9b74-0abbe16ba233" />
+
+<img width="1086" height="554" alt="Screenshot 2026-06-03 at 3 27 25 PM" src="https://github.com/user-attachments/assets/629a7098-909f-4633-a6ee-701a42e448c5" />
+
+<img width="677" height="558" alt="Screenshot 2026-06-03 at 3 27 45 PM" src="https://github.com/user-attachments/assets/033c637f-74ac-4a8c-9557-de9069f69c9f" />
+
+<img width="1205" height="477" alt="Screenshot 2026-06-03 at 3 27 50 PM" src="https://github.com/user-attachments/assets/787f1011-7925-45a7-a92d-b78ebe0d78a8" />
+
