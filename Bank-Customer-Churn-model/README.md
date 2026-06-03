@@ -1,5 +1,11 @@
 # Bank Customer Churn Model
 
+In this project, we focus on solving a common problem in machine learning: class imbalance. Class imbalance occurs when the number of instances of one class significantly outweighs the other, leading to biased models that perform poorly on the minority class. The goal of this module is to apply various sampling techniques—oversampling and undersampling—and optimize a Support Vector Machine (SVM) model using GridSearchCV to enhance model performance.
+
+To start, the dataset is split into training and testing sets, and we apply different sampling methods to balance the class distribution. Next, we standardize the data to ensure that features are on the same scale, allowing the SVM model to perform optimally. We then evaluate the model's performance by analyzing confusion matrices and classification reports to assess metrics like precision, recall, and F1-score.
+
+Finally, hyperparameter tuning is performed using GridSearchCV to fine-tune the SVM model and find the best set of hyperparameters. This process ensures that the model is well-optimized for better predictive performance, especially on the minority class. The overall objective is to demonstrate how effective sampling techniques and hyperparameter tuning can improve the accuracy and generalization of classification models in imbalanced datasets.
+
 SVM-based binary classifier that predicts whether a bank customer will churn.
 Demonstrates **class-imbalance handling** (Random Under/Over-Sampling) and
 **hyperparameter tuning** via `GridSearchCV`.
@@ -134,3 +140,21 @@ All plots are saved to `outputs/` (git-ignored):
 - GridSearchCV uses `cv=2` (matches the notebook). Increase to `cv=5` for more robust estimates at the cost of extra runtime.
 - The notebook used `svc.predict` for all three test sets, which is a bug (uses the original model for RUS/ROS test sets). This project correctly calls `svc_rus.predict` and `svc_ros.predict`.
 - For production use, consider `joblib.dump` to serialise the best estimator.
+
+---
+
+## Screenshots
+
+<img width="1302" height="949" alt="Screenshot 2026-06-03 at 2 05 22 PM" src="https://github.com/user-attachments/assets/ec9ee76b-e621-4d89-85a1-962391cd294c" />
+
+<img width="1283" height="953" alt="Screenshot 2026-06-03 at 2 11 14 PM" src="https://github.com/user-attachments/assets/d5002b61-1e27-449f-8cb1-57c4ab52cfd3" />
+
+<img width="753" height="553" alt="Screenshot 2026-06-03 at 2 12 36 PM" src="https://github.com/user-attachments/assets/5b52ac2c-aff9-4f6b-a296-ec0417f7199a" />
+
+<img width="1081" height="381" alt="Screenshot 2026-06-03 at 2 12 47 PM" src="https://github.com/user-attachments/assets/eaf851d5-4fa8-4c0d-8c16-1c0788360d4a" />
+
+<img width="712" height="556" alt="Screenshot 2026-06-03 at 2 13 02 PM" src="https://github.com/user-attachments/assets/49a9da06-ec04-48ea-9adf-93f2ea940d18" />
+
+<img width="712" height="559" alt="Screenshot 2026-06-03 at 2 13 20 PM" src="https://github.com/user-attachments/assets/4e3ff90f-ac9f-440a-9172-ff9eda776b53" />
+
+<img width="708" height="557" alt="Screenshot 2026-06-03 at 2 13 32 PM" src="https://github.com/user-attachments/assets/a5621329-cddb-4061-a735-acc7dd31d7b5" />
