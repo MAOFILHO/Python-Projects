@@ -1,0 +1,28 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (local environment isolation)
+.venv/
+venv/
+ENV/
+env/
+ENV/
+
+# macOS configuration files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs and Code Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Logs and debug data
+*.log
