@@ -91,3 +91,12 @@ python -m streamlit run app.py
 ```
 
 Once the framework spins up, open your web browser and head over to `http://localhost:8501` to use the interactive application interface.
+
+### Screenshots
+
+<img width="1200" height="888" alt="Screenshot 2026-06-02 at 11 31 27 PM" src="https://github.com/user-attachments/assets/5ebcf938-33a3-42cf-8416-937ad530853d" />
+
+<img width="1430" height="950" alt="Screenshot 2026-06-03 at 1 24 25 PM" src="https://github.com/user-attachments/assets/e86ba213-48cb-4d19-b748-7d2678fe5838" />
+
+<img width="1429" height="944" alt="Screenshot 2026-06-03 at 1 24 37 PM" src="https://github.com/user-attachments/assets/c43ae3bd-f995-4912-bf9b-f8d95f3730ff" />
+
