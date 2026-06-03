@@ -1,0 +1,4 @@
+Model,Train ROC-AUC,Val ROC-AUC
+LogisticRegression,0.5139,0.5402
+SVC,0.4842,0.4923
+XGBClassifier,0.9389,0.4674

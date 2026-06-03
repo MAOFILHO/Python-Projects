@@ -27,4 +27,4 @@ ENV/
 .DS_Store
 
 # Outputs (optional – remove this line to track generated files)
-outputs/
+# outputs/
