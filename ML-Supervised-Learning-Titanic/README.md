@@ -1,6 +1,6 @@
 # 🎯 Titanic Survival Prediction — Supervised Learning
 
-K21 Academy | Machine Learning Hands-On Series  
+Machine Learning Hands-On Series  
 **Three models. One dataset. Full pipeline.**
 
 ---
@@ -95,4 +95,20 @@ titanic_survival/
 
 ---
 
-*K21 Academy — Machine Learning Hands-On Series*
+## Screenshots
+
+<img width="1275" height="783" alt="Screenshot 2026-06-03 at 8 26 02 PM" src="https://github.com/user-attachments/assets/566f83fa-77e1-47ba-8d71-e0edc1448d5a" />
+
+<img width="1028" height="717" alt="Screenshot 2026-06-03 at 8 28 44 PM" src="https://github.com/user-attachments/assets/a8cd7569-3c73-49c8-9745-123603a0fcd7" />
+
+<img width="980" height="703" alt="Screenshot 2026-06-03 at 8 29 29 PM" src="https://github.com/user-attachments/assets/2cad8cbf-bcdc-4de0-9ee0-2f623f8ed08b" />
+
+<img width="1357" height="774" alt="Screenshot 2026-06-03 at 8 29 54 PM" src="https://github.com/user-attachments/assets/2a910056-58ab-409c-a746-0f86b230c24f" />
+
+<img width="1084" height="310" alt="Screenshot 2026-06-03 at 8 30 30 PM" src="https://github.com/user-attachments/assets/68030bfc-15af-408c-8058-6f51a95e69c0" />
+
+<img width="572" height="378" alt="Screenshot 2026-06-03 at 8 30 43 PM" src="https://github.com/user-attachments/assets/01e363d6-230e-4967-9054-10ac473e46a9" />
+
+<img width="1035" height="382" alt="Screenshot 2026-06-03 at 8 31 03 PM" src="https://github.com/user-attachments/assets/93ffba4e-359f-4903-bc32-1573ea7c33e3" />
+
+<img width="1084" height="373" alt="Screenshot 2026-06-03 at 8 31 14 PM" src="https://github.com/user-attachments/assets/643b87f1-b9b9-44b1-be54-75073e17782c" />
