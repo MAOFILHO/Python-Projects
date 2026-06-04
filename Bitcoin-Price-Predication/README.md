@@ -1,7 +1,5 @@
 # Bitcoin Price Prediction
 
-Machine learning pipeline that predicts whether Bitcoin's price will go **up or down** the next day, trained on OHLC data from 2014 to 2022.
-
 Bitcoin price prediction has garnered significant attention due to its volatile nature and the potential for lucrative trading opportunities. With the rise of machine learning (ML), predicting market trends has become increasingly feasible. This project explores how ML can be utilized to predict Bitcoin's price movement, specifically whether a trade will result in a profitable outcome. By leveraging various ML models, such as Logistic Regression, Support Vector Machines (SVM), and XGBoost, we aim to analyze Bitcoin price data to forecast future trends.
 
 We begin by loading and exploring Bitcoin price data, focusing on OHLC (Open, High, Low, Close) values from 2014 to 2022. Next, we perform feature engineering, introducing variables such as \"open-close\" and \"low-high\" to better understand market behavior. With preprocessed data, we train multiple ML models to predict the market's direction. The model's performance is evaluated using metrics like ROC-AUC, offering insights into the effectiveness of different algorithms in predicting Bitcoin price movements.
