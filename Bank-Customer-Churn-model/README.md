@@ -10,7 +10,7 @@ SVM-based binary classifier that predicts whether a bank customer will churn.
 Demonstrates **class-imbalance handling** (Random Under/Over-Sampling) and
 **hyperparameter tuning** via `GridSearchCV`.
 
----
+
 
 ## Project structure
 
@@ -32,7 +32,7 @@ bank-churn-model/
 └── README.md
 ```
 
----
+
 
 ## Requirements
 
@@ -46,7 +46,6 @@ bank-churn-model/
 | matplotlib | ≥ 3.8 |
 | seaborn | ≥ 0.13 |
 
----
 
 ## Quick start (VS Code terminal on Mac)
 
@@ -85,7 +84,6 @@ python main.py --skip-grid
 # python main.py --data path/to/data.csv --output-dir results/
 ```
 
----
 
 ## Pipeline steps
 
@@ -97,7 +95,7 @@ python main.py --skip-grid
 | **4 – Baseline SVM** | Default `SVC()` trained and evaluated on Original / RUS / ROS splits |
 | **5 – GridSearchCV** | Exhaustive search over `C ∈ {0.1, 1, 10}`, `gamma ∈ {1, 0.1, 0.01}`, `kernel=rbf`, `class_weight=balanced` with 2-fold CV |
 
----
+
 
 ## Outputs
 
@@ -111,7 +109,7 @@ All plots are saved to `outputs/` (git-ignored):
 | `confusion_matrix_Baseline_*.png` | Confusion matrices – default SVM |
 | `confusion_matrix_GridSearch_*.png` | Confusion matrices – tuned SVM |
 
----
+
 
 ## Dataset
 
@@ -133,28 +131,43 @@ All plots are saved to `outputs/` (git-ignored):
 | Estimated Salary | float | Standardised |
 | Churn | int | **Target** (0=stay, 1=churn) |
 
----
+
 
 ## Notes & improvements
 
 - GridSearchCV uses `cv=2` (matches the notebook). Increase to `cv=5` for more robust estimates at the cost of extra runtime.
 - The notebook used `svc.predict` for all three test sets, which is a bug (uses the original model for RUS/ROS test sets). This project correctly calls `svc_rus.predict` and `svc_ros.predict`.
-- For production use, consider `joblib.dump` to serialise the best estimator.
+- For production use, consider `joblib.dump` to serialize the best estimator.
 
----
+
 
 ## Screenshots
 
 <img width="1302" height="949" alt="Screenshot 2026-06-03 at 2 05 22 PM" src="https://github.com/user-attachments/assets/ec9ee76b-e621-4d89-85a1-962391cd294c" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="1283" height="953" alt="Screenshot 2026-06-03 at 2 11 14 PM" src="https://github.com/user-attachments/assets/d5002b61-1e27-449f-8cb1-57c4ab52cfd3" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="753" height="553" alt="Screenshot 2026-06-03 at 2 12 36 PM" src="https://github.com/user-attachments/assets/5b52ac2c-aff9-4f6b-a296-ec0417f7199a" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="1081" height="381" alt="Screenshot 2026-06-03 at 2 12 47 PM" src="https://github.com/user-attachments/assets/eaf851d5-4fa8-4c0d-8c16-1c0788360d4a" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="712" height="556" alt="Screenshot 2026-06-03 at 2 13 02 PM" src="https://github.com/user-attachments/assets/49a9da06-ec04-48ea-9adf-93f2ea940d18" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="712" height="559" alt="Screenshot 2026-06-03 at 2 13 20 PM" src="https://github.com/user-attachments/assets/4e3ff90f-ac9f-440a-9172-ff9eda776b53" />
 
 <img width="708" height="557" alt="Screenshot 2026-06-03 at 2 13 32 PM" src="https://github.com/user-attachments/assets/a5621329-cddb-4061-a735-acc7dd31d7b5" />
+
+
+## Author
+
+**Marcos Oliveira** — [LinkedIn](https://www.linkedin.com/in/mfilho1/) | [GitHub](https://github.com/MAOFILHO)
