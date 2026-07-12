@@ -165,6 +165,8 @@ All plots are saved to `outputs/` (git-ignored):
 <br><br>
 <img width="712" height="559" alt="Screenshot 2026-06-03 at 2 13 20 PM" src="https://github.com/user-attachments/assets/4e3ff90f-ac9f-440a-9172-ff9eda776b53" />
 
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
 <img width="708" height="557" alt="Screenshot 2026-06-03 at 2 13 32 PM" src="https://github.com/user-attachments/assets/a5621329-cddb-4061-a735-acc7dd31d7b5" />
 
 
