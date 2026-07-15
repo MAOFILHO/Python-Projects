@@ -73,8 +73,8 @@ zero required local Docker.
                                     in-process,                         │
                                     no network calls)                   │
                                                                         │
-        mode=microservices → gateway → {sum|mul}-service → history-service
-        mode=monolith       → gateway → monolith          → history-service
+                              mode=microservices → gateway → {sum|mul}-service → history-service
+                              mode=monolith      → gateway → monolith          → history-service
 ```
 
 Every operation is logged to `history-service` regardless of mode, so
