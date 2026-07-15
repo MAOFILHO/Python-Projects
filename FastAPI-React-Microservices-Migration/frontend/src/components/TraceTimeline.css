@@ -1,0 +1,52 @@
+.trace-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.trace-hop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  animation: trace-fade-in 0.25s ease-out;
+}
+
+.trace-hop-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.trace-hop-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.trace-hop-action {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+}
+
+.trace-hop-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-gray);
+}
+
+@keyframes trace-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

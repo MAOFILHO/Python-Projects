@@ -1,0 +1,30 @@
+.learn-page section {
+  scroll-margin-top: 1.5rem;
+}
+
+.learn-page section + section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.learn-index {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.learn-index h3 {
+  margin-top: 0;
+}
+
+.learn-index ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.learn-index a {
+  font-weight: 600;
+}

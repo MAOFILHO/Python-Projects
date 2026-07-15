@@ -1,0 +1,38 @@
+.latency-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.latency-bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 80px;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.latency-bar-label {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.latency-bar-track {
+  background: var(--bg-light);
+  border-radius: 4px;
+  height: 18px;
+  overflow: hidden;
+}
+
+.latency-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease-out;
+}
+
+.latency-bar-value {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  text-align: right;
+}

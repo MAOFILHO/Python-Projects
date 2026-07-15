@@ -1,0 +1,32 @@
+[project]
+name = "microservices-lab-dev"
+version = "0.1.0"
+description = "Root dev-tooling project for microservices-lab (not a runtime dependency root for any service)"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.setuptools]
+# This project has no importable code of its own - it's just a home for dev
+# tooling config (ruff/pytest) plus the `[dev]` extras installed into the
+# root venv. Without this, setuptools' flat-layout auto-discovery trips over
+# the repo's other top-level directories (services/, frontend/, azure/, ...).
+packages = []
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

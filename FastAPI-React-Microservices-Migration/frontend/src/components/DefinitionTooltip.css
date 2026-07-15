@@ -1,0 +1,34 @@
+.def-tooltip-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.def-tooltip-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.def-tooltip-bubble {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: 0.4rem;
+  z-index: 20;
+  width: max-content;
+  max-width: 320px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}

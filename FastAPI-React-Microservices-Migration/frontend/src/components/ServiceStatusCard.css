@@ -1,0 +1,23 @@
+.service-status-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 180px;
+}
+
+.service-status-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-status-card-latency {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}

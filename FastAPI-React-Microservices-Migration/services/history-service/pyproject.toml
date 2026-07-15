@@ -1,0 +1,18 @@
+[project]
+name = "history-service"
+version = "0.1.0"
+description = "Records and reports on operations performed by the monolith and microservices, for side-by-side comparison"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "sqlmodel>=0.0.16",
+    "ms-lab-common",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
