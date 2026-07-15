@@ -296,7 +296,7 @@ latency, and hop count — the same data feeding the Compare Performance page.
 <br><br>
 <img width="826" height="703" alt="Screenshot 2026-07-14 at 9 13 47 PM" src="https://github.com/user-attachments/assets/716ae354-5405-46e8-b7b2-c8d485aec329" />
 
-### Compare Performance
+## Compare Performance
 
 <img width="830" height="704" alt="Screenshot 2026-07-14 at 9 15 08 PM" src="https://github.com/user-attachments/assets/cbf5fb77-19c8-45b0-9170-82ad9bf091c6" />
 
