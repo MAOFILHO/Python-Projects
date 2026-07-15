@@ -1,4 +1,4 @@
-# microservices-lab — Monolith vs. Microservices, Interactively
+# FastAPI-React-Microservices-Migration — Monolith vs. Microservices
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 A hands-on teaching platform for one question every backend engineer eventually has to answer:
-**when — and how — do you split a monolith into microservices?** The same "sum" and
+**When — and how — do you split a monolith into microservices?** The same "sum" and
 "multiply" operation runs two ways: once as a single in-process **monolith**, and once as a
 real network of independent **microservices** (a gateway, two compute services, and a history
 service) — and you can watch the difference. Every request returns a step-by-step trace of
@@ -57,8 +57,8 @@ zero required local Docker.
 ## The Architecture
 
 ```
-                         ┌─────────────────────────┐
-   Browser ────────────► │   gateway (BFF, :8080)   │  ← external ingress (public)
+                          ┌──────────────────────────┐
+   Browser ─────────────► │   gateway (BFF, :8080)   │  ← external ingress (public)
   (React UI)              │  builds the trace, adds  │
                           │  X-Request-ID            │
                           └────────────┬─────────────┘
@@ -68,11 +68,11 @@ zero required local Docker.
         sum-service     mul-service   monolith    history-service       │
           (:8001)         (:8002)     (:8000)        (:8003)            │
         POST /sum        POST /mul   POST /sum,    SQLite-backed        │
-                                      POST /mul     operation log        │
+                                      POST /mul     operation log       │
                                     (single hop,                        │
                                     in-process,                         │
                                     no network calls)                   │
-                                                                          │
+                                                                        │
         mode=microservices → gateway → {sum|mul}-service → history-service
         mode=monolith       → gateway → monolith          → history-service
 ```
