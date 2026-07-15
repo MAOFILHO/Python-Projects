@@ -61,7 +61,7 @@ end-to-end directly from the application.
 
 ```
                           ┌──────────────────────────┐
-   Browser ─────────────► │   gateway (BFF, :8080)   │  ← external ingress (public)
+   Browser ─────────────► │   gateway (BFF, :8080)   │  ←─ external ingress (public)
   (React UI)              │  builds the trace, adds  │
                           │  X-Request-ID            │
                           └────────────┬─────────────┘
@@ -134,27 +134,16 @@ make install   # installs services/common + dev tooling into .venv, creates + in
                # each of the other 5 services into its OWN venv, then npm install in frontend/
 ```
 
-## Running the Project
 
-### Run everything locally (recommended — no Docker)
-
-```bash
-make run-local
-```
-
-This starts all 5 backend services (`sum-service` :8001, `mul-service` :8002, `monolith`
-:8000, `history-service` :8003, `gateway` :8080) plus the Vite frontend dev server, each as a
-plain `uvicorn`/`npm run dev` subprocess, with interleaved `[service-name]`-prefixed logs.
-Press `Ctrl+C` to stop everything cleanly.
-
-Then open **http://localhost:5173** (Vite dev server, which proxies `/api` → the gateway on
-`:8080`).
+<img width="963" height="381" alt="Screenshot 2026-07-14 at 9 54 00 PM" src="https://github.com/user-attachments/assets/551564c2-d6db-4d3c-943d-c9bea07c9528" />
 
 ### Run the test suite
 
 ```bash
 make test
 ```
+<img width="1136" height="710" alt="Screenshot 2026-07-14 at 9 56 06 PM" src="https://github.com/user-attachments/assets/a19a3aff-8b1f-4495-ac51-962bf8cd1c13" />
+
 
 Runs every backend service's pytest suite independently (`pytest services/<name>` — not one
 combined run, since sibling services intentionally don't share a test root, matching their
@@ -166,10 +155,38 @@ independent-deployability principle) plus the frontend's Vitest suite.
 make smoke
 ```
 
+
+<img width="807" height="717" alt="Screenshot 2026-07-14 at 10 11 58 PM" src="https://github.com/user-attachments/assets/537923b9-4935-4bcb-96b4-47ffec3e1249" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="797" height="714" alt="Screenshot 2026-07-14 at 10 12 11 PM" src="https://github.com/user-attachments/assets/eeadf976-4499-4dc7-b8f4-3287202a95e2" />
+
 Starts the real stack, waits for all 5 services to report healthy, exercises
 `POST /api/operations/{sum,mul}` in **both** modes, confirms history was recorded, checks
 `/api/history/stats`, prints a PASS/FAIL checklist, and shuts everything down — safe to re-run
 any time. See [Testing](#testing) below for the exact checklist.
+
+
+
+## Running the Project
+
+### Run everything locally (recommended — no Docker)
+
+```bash
+make run-local
+```
+
+<img width="759" height="655" alt="Screenshot 2026-07-14 at 10 13 42 PM" src="https://github.com/user-attachments/assets/acd4b4f3-e68d-4414-a673-3d049e051711" />
+
+
+This starts all 5 backend services (`sum-service` :8001, `mul-service` :8002, `monolith`
+:8000, `history-service` :8003, `gateway` :8080) plus the Vite frontend dev server, each as a
+plain `uvicorn`/`npm run dev` subprocess, with interleaved `[service-name]`-prefixed logs.
+Press `Ctrl+C` to stop everything cleanly.
+
+Then open **http://localhost:5173** (Vite dev server, which proxies `/api` → the gateway on
+`:8080`).
 
 ### Deploy to Azure (optional)
 
@@ -187,6 +204,15 @@ make azure-verify      # confirms nothing is left behind
 **Or trigger it from the app itself.** The Migration page's "🚀 Deploy to Azure" button runs
 the exact same `deploy.sh` flow in the background and shows you exactly what to expect while
 it runs:
+
+
+<img width="922" height="467" alt="Screenshot 2026-07-14 at 10 19 54 PM" src="https://github.com/user-attachments/assets/be074983-6010-40a7-a867-e06573e2d09d" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="918" height="524" alt="Screenshot 2026-07-14 at 10 43 17 PM" src="https://github.com/user-attachments/assets/917aaa2c-ec15-4a6e-8bf7-2f55285bbd5a" />
+
+
 
 - The button switches to a disabled **"Deploying to Azure…"** state and the console below it
   streams every line of real `deploy.sh` output live (polled every ~700ms) — the same output
