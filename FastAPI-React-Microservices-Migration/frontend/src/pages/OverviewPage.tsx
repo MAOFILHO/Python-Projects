@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 export function OverviewPage() {
   return (
     <div>
-      <h1>Contoso Microservices Lab</h1>
+      <h1>Monolith to Microservices Migration</h1>
       <p>
-        This lab lets you run the same arithmetic operation through two different backend
+        This project lets you run the same arithmetic operation through two different backend
         architectures — a traditional <strong>monolith</strong> and a decomposed{' '}
         <strong>microservices</strong> topology — and see exactly what happens on the wire:
         which services were hit, how long each hop took, and what the end-to-end latency looks

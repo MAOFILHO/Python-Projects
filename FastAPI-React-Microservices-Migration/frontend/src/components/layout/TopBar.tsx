@@ -8,7 +8,7 @@ export function TopBar() {
         <span className="topbar-title">Contoso</span>
       </Link>
       <span className="topbar-divider" aria-hidden="true" />
-      <span className="topbar-subtitle">Microservices Lab</span>
+      <span className="topbar-subtitle">Monolith to Microservices Migration</span>
     </header>
   );
 }
