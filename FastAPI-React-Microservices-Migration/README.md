@@ -7,7 +7,7 @@
 ![Azure Container Apps](https://img.shields.io/badge/Azure-Container_Apps-0078D4?logo=microsoftazure&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A hands-on teaching platform for one question every backend engineer eventually has to answer:
+One question every backend engineer eventually has to answer:
 **When — and how — do you split a monolith into microservices?** The same "sum" and
 "multiply" operation runs two ways: once as a single in-process **monolith**, and once as a
 real network of independent **microservices** (a gateway, two compute services, and a history
