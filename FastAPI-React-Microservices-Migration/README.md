@@ -1,4 +1,4 @@
-# Azure Migration Project from Monolith to Microservices
+# Monolith-to-Microservices Migration Platform on Azure
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
@@ -7,18 +7,21 @@
 ![Azure Container Apps](https://img.shields.io/badge/Azure-Container_Apps-0078D4?logo=microsoftazure&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-One question every backend engineer eventually has to answer:
-**When — and how — do you split a monolith into microservices?** The same "sum" and
-"multiply" operation runs two ways: once as a single in-process **monolith**, and once as a
-real network of independent **microservices** (a gateway, two compute services, and a history
-service) — and you can watch the difference. Every request returns a step-by-step trace of
-which service handled it and how long each hop took, animated live in the browser, with a
-performance comparison view backed by real historical latency data.
+Designed and built a production-grade platform demonstrating the migration of a monolithic
+application to microservices, deployed on Azure. The same business logic — sum and multiply
+operations — runs through two live architectures side by side: a single in-process **monolith**,
+and a real, networked **microservices** topology (an API gateway, two independent compute
+services, and a dedicated history service). Every request returns a structured, step-by-step
+distributed trace of which service handled it and how long each hop took, visualized in real
+time in the browser, alongside a performance comparison view backed by real historical latency
+data.
 
-Built as a from-scratch, production-grade rewrite of a small teaching repo
-([credit below](#credit--inspiration)), extended with a FastAPI backend, a React+TypeScript
-frontend, and an optional Azure Container Apps deployment — with zero required secrets and
-zero required local Docker.
+Built from the ground up with a FastAPI backend, a React + TypeScript frontend, and an optional
+Azure Container Apps deployment provisioned via Bicep — with zero required secrets and zero
+local Docker dependency. **Key differentiator:** the migration itself is a live, interactive
+process rather than a static diagram — traffic is progressively shifted from monolith to
+microservices in real time, and a real Azure deployment can be triggered and observed
+end-to-end directly from the application.
 
 ## Why This Is Production-Grade
 
@@ -288,10 +291,10 @@ the engineering, not a footnote.
 - Never hardcode a directory-depth assumption (`parents[N]`) in code that might run from more than one deployment shape — a container image is almost never the same directory depth as a local checkout.
 - A live deployment isn't verified until you've actually checked replica health and logs, not just that the deployment command exited 0 — `provisioningState: Succeeded` only means Azure accepted the *request*, not that the container is actually running.
 
-## Learn: Microservices Fundamentals
+## Microservices Migration Reference
 
-The app itself ships an in-product "Learn" section (sidebar → LEARN → **What Are
-Microservices?**) built from three migration/architecture references. It's a single scrollable
+The application includes an in-product reference module (sidebar → LEARN → **What Are
+Microservices?**) built from three migration/architecture resources. It's a single scrollable
 page rather than several separate ones — "What Are Microservices?" renders first, followed by
 an in-page index that jumps down to the rest: the **Strangler Fig migration pattern** (7-step
 incremental cutover, and why not a "Big Bang" rewrite), **service boundaries and anti-patterns**
@@ -301,10 +304,8 @@ distributed tracing, circuit breakers, Chaos Monkey), **when NOT to use microser
 full glossary. Every concept links back to where it's demonstrated live in the app (the trace
 timeline *is* distributed tracing; the health page *is* the health-check pattern).
 
-## Credit / Inspiration
+## Credit
 
-This project began as a from-scratch, production-grade extension of
-[Senhaji-Rhazi-Hamza/kube-python-micro-services-example](https://github.com/Senhaji-Rhazi-Hamza/kube-python-micro-services-example)
 (MIT License) — a small Flask teaching repo demonstrating the same monolith-vs-microservices
 "sum/mul" pattern, which is itself cited as a reference example in one of the migration guides
 this project's Learn section is built from. See [`NOTICE.md`](NOTICE.md).
