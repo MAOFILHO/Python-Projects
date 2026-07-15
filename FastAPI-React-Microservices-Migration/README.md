@@ -1,5 +1,4 @@
-# Azure Microservices Migration Project
-### Monolith vs. Microservices
+# Azure Migration Project from Monolith to Microservices
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
