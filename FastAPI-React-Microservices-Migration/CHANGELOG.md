@@ -120,6 +120,4 @@
 - Architecture diagram generator (`diagram/generate_diagram.py`, via the `diagrams` package).
 
 ### Credits
-- Architecture and arithmetic logic based on / inspired by
-  [Senhaji-Rhazi-Hamza/kube-python-micro-services-example](https://github.com/Senhaji-Rhazi-Hamza/kube-python-micro-services-example)
-  (MIT License).
+- Architecture and arithmetic logic based on / inspired by (MIT License).
