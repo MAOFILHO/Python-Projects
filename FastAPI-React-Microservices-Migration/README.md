@@ -1,4 +1,5 @@
-# FastAPI-React-Microservices-Migration — Monolith vs. Microservices
+# Azure Microservices Migration Project
+### Monolith vs. Microservices
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
@@ -23,7 +24,7 @@ zero required local Docker.
 ## Why This Is Production-Grade
 
 - **A real distributed trace, not a diagram** — the gateway generates an `X-Request-ID`
-  correlation id, propagates it to every downstream call, and returns a structured
+  correlation ID, propagates it to every downstream call, and returns a structured
   `TraceHop[]` the frontend animates step-by-step. This is the actual "Distributed Tracing"
   observability pattern the Learn section teaches, made concrete instead of just described.
 - **Deliberate, documented anti-pattern avoidance** — arithmetic logic is duplicated across
@@ -63,11 +64,11 @@ zero required local Docker.
                           │  X-Request-ID            │
                           └────────────┬─────────────┘
                                        │
-                ┌──────────────┬───────┼────────────────┬───────────────┐
-                ▼              ▼       ▼                ▼               │
-        sum-service     mul-service   monolith    history-service       │
-          (:8001)         (:8002)     (:8000)        (:8003)            │
-        POST /sum        POST /mul   POST /sum,    SQLite-backed        │
+            ┌──────────────┬───────────┼────────────────┬───────────────┐
+            ▼              ▼           ▼                ▼               │
+        sum-service   mul-service   monolith    history-service         │
+          (:8001)       (:8002)     (:8000)        (:8003)              │
+        POST /sum      POST /mul   POST /sum,    SQLite-backed          │
                                       POST /mul     operation log       │
                                     (single hop,                        │
                                     in-process,                         │
