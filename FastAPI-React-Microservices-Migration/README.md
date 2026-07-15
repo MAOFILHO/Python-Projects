@@ -137,19 +137,26 @@ make install   # installs services/common + dev tooling into .venv, creates + in
 
 <img width="963" height="381" alt="Screenshot 2026-07-14 at 9 54 00 PM" src="https://github.com/user-attachments/assets/551564c2-d6db-4d3c-943d-c9bea07c9528" />
 
-### Run the test suite
-
-```bash
-make test
-```
-<img width="1136" height="710" alt="Screenshot 2026-07-14 at 9 56 06 PM" src="https://github.com/user-attachments/assets/a19a3aff-8b1f-4495-ac51-962bf8cd1c13" />
-
-
-Runs every backend service's pytest suite independently (`pytest services/<name>` — not one
-combined run, since sibling services intentionally don't share a test root, matching their
-independent-deployability principle) plus the frontend's Vitest suite.
 
 ### Run the full end-to-end smoke test
+
+`make smoke` runs an 11-check end-to-end suite against the real, running stack:
+
+| # | Check | What it proves |
+|---|---|---|
+| 1 | Prerequisite check | Python 3.12 + Node present before anything starts |
+| 2–6 | Each of the 5 services becomes healthy | Every process actually started and is serving, not just running |
+| 7 | `sum`, `mode=microservices` | Gateway → sum-service → history-service, ≥2 trace hops, correct result |
+| 8 | `sum`, `mode=monolith` | Gateway → monolith → history-service, correct result |
+| 9 | `mul`, `mode=microservices` | Second operation type works end-to-end |
+| 10 | `GET /api/history` | Prior operations were actually recorded |
+| 11 | `GET /api/history/stats` | Both modes present with `count >= 1`, powering the Compare Performance page |
+
+
+Plus, independent of the smoke test: 40+ `pytest` unit/endpoint/integration tests across all 5
+backend services (arithmetic correctness, request validation, DB round-trips, mocked-downstream
+gateway orchestration including a "one downstream is down but `/api/health` still returns 200"
+resilience test), and a frontend Vitest smoke test.
 
 ```bash
 make smoke
@@ -162,12 +169,19 @@ make smoke
 <br><br>
 <img width="797" height="714" alt="Screenshot 2026-07-14 at 10 12 11 PM" src="https://github.com/user-attachments/assets/eeadf976-4499-4dc7-b8f4-3287202a95e2" />
 
-Starts the real stack, waits for all 5 services to report healthy, exercises
-`POST /api/operations/{sum,mul}` in **both** modes, confirms history was recorded, checks
-`/api/history/stats`, prints a PASS/FAIL checklist, and shuts everything down — safe to re-run
-any time. See [Testing](#testing) below for the exact checklist.
 
 
+### Run the test suite
+
+```bash
+make test
+```
+<img width="1136" height="710" alt="Screenshot 2026-07-14 at 9 56 06 PM" src="https://github.com/user-attachments/assets/a19a3aff-8b1f-4495-ac51-962bf8cd1c13" />
+
+
+Runs every backend service's pytest suite independently (`pytest services/<name>` — not one
+combined run, since sibling services intentionally don't share a test root, matching their
+independent-deployability principle) plus the frontend's Vitest suite.
 
 ## Running the Project
 
@@ -235,6 +249,62 @@ written to disk, never present in the deployed Azure image, which has no `az` CL
 it can't be triggered remotely and can't spend anyone else's Azure budget. See the docstring in
 `services/gateway/app/migration_control.py` for the full threat-model writeup.
 
+### Start Migration to Microservices
+
+The Migration page is where the Strangler Fig pattern becomes something you actively drive,
+one stage at a time, instead of only reading about it.
+
+**Where to go:** sidebar → **MIGRATION** → **Start Migration**.
+
+**What you'll see first:** a status banner reading **"Now running: Monolithic architecture,"**
+a progress bar at **0% microservices / 100% monolith**, and five stage markers along the bar
+(0% → 25% → 50% → 75% → 100%) representing the incremental traffic cutover described in the
+Strangler Fig Migration Pattern reference linked directly on the page.
+
+**To run it automatically:** click **▶ Start Migration to Microservices**. This advances
+through all five stages on its own, shifting a growing percentage of simulated traffic from
+the monolith path to the microservices path at each step, and streams a running commentary
+into the **Migration console** below as it goes — for example,
+`[Now running: Microservices architecture] Cutover complete. 100% of traffic now flows
+through the microservices path. Monolith can be decommissioned.`
+
+<img width="1423" height="700" alt="Screenshot 2026-07-14 at 9 12 37 PM" src="https://github.com/user-attachments/assets/38d8f0c5-57ad-427d-bd45-a516fa7a6be3" />
+
+**To step through it manually:** use the four controls under "Or step through it manually":
+- **← Back a stage** / **Advance stage →** — move one traffic-split stage at a time
+- **Run 6 requests at this stage** — fires a small batch of simulated `sum`/`mul` requests at
+  the *current* traffic split, so you can see exactly how many land on the monolith vs. the
+  microservices path at that percentage
+- **Reset to Stage 0** — rewinds the simulation back to 100% monolith; note that this only
+  resets the traffic-split simulation locally — it does **not** erase the recorded request
+  history or the comparison metrics, which keep accumulating across everything you run in
+  the session
+
+**Expected result once the migration completes:** the banner updates to **"Migration
+complete — the App is now running on Microservices,"** confirming all simulated traffic now
+flows through the microservices path and the monolith has been fully strangled, with a direct
+link to **Click Compare to see the performance difference**. Below that, the **Live request
+trace** panel shows each service hop for the most recent request (for example, `sum-service` →
+`history-service`, each with its own latency and health status), and the **Request log** table
+lists every simulated request, most recent first, with its operation, routing target, result,
+latency, and hop count — the same data feeding the Compare Performance page.
+
+
+<img width="919" height="705" alt="Screenshot 2026-07-14 at 9 13 11 PM" src="https://github.com/user-attachments/assets/2e119418-b505-4a48-8caa-858d1ae160ad" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="826" height="703" alt="Screenshot 2026-07-14 at 9 13 47 PM" src="https://github.com/user-attachments/assets/716ae354-5405-46e8-b7b2-c8d485aec329" />
+
+### Compare Performance
+
+<img width="830" height="704" alt="Screenshot 2026-07-14 at 9 15 08 PM" src="https://github.com/user-attachments/assets/cbf5fb77-19c8-45b0-9170-82ad9bf091c6" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="822" height="702" alt="Screenshot 2026-07-14 at 10 52 31 PM" src="https://github.com/user-attachments/assets/b62344b2-2989-4dd0-8ef0-62452f84dd58" />
+
+
 ## Project Structure
 
 ```
@@ -259,24 +329,35 @@ microservices-lab/
 └── README.md
 ```
 
-## Testing
+## Web App Screenshots
 
-`make smoke` runs an 11-check end-to-end suite against the real, running stack:
+<img width="1433" height="697" alt="Screenshot 2026-07-14 at 9 09 52 PM" src="https://github.com/user-attachments/assets/91a2c5ad-01e9-463e-9c16-abc50ef1ad56" />
 
-| # | Check | What it proves |
-|---|---|---|
-| 1 | Prerequisite check | Python 3.12 + Node present before anything starts |
-| 2–6 | Each of the 5 services becomes healthy | Every process actually started and is serving, not just running |
-| 7 | `sum`, `mode=microservices` | Gateway → sum-service → history-service, ≥2 trace hops, correct result |
-| 8 | `sum`, `mode=monolith` | Gateway → monolith → history-service, correct result |
-| 9 | `mul`, `mode=microservices` | Second operation type works end-to-end |
-| 10 | `GET /api/history` | Prior operations were actually recorded |
-| 11 | `GET /api/history/stats` | Both modes present with `count >= 1`, powering the Compare Performance page |
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1434" height="702" alt="Screenshot 2026-07-14 at 9 10 07 PM" src="https://github.com/user-attachments/assets/c56aad7a-8fc8-4cc3-9658-8812ee08fb96" />
 
-Plus, independent of the smoke test: 40+ `pytest` unit/endpoint/integration tests across all 5
-backend services (arithmetic correctness, request validation, DB round-trips, mocked-downstream
-gateway orchestration including a "one downstream is down but `/api/health` still returns 200"
-resilience test), and a frontend Vitest smoke test.
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1436" height="699" alt="Screenshot 2026-07-14 at 9 10 20 PM" src="https://github.com/user-attachments/assets/f406837f-e5e8-4696-bd21-5af9d25b5552" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1417" height="694" alt="Screenshot 2026-07-14 at 9 10 38 PM" src="https://github.com/user-attachments/assets/ef621a0c-dcda-443a-b127-a134724ed2d9" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1418" height="701" alt="Screenshot 2026-07-14 at 9 11 50 PM" src="https://github.com/user-attachments/assets/cd225fd6-54fe-46e1-a102-f4861eed67e1" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1429" height="702" alt="Screenshot 2026-07-14 at 9 12 09 PM" src="https://github.com/user-attachments/assets/5b6cd7c0-7367-4979-a0eb-95af5e027586" />
+
+<img width="100%" height="1" alt="" src="https://github.com/user-attachments/assets/f2af28ee-a373-4488-89e5-2b84d5da9620" />
+<br><br>
+<img width="1423" height="700" alt="Screenshot 2026-07-14 at 9 12 37 PM" src="https://github.com/user-attachments/assets/974ec550-322b-4236-8a32-3d5162ed511c" />
+
+
 
 ## Key Engineering Decisions
 
